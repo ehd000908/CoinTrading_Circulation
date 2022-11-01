@@ -160,7 +160,7 @@ def short_position():
 # -------------------------------------------------------------------
 def balances():
     
-    balances = balances = session.get_wallet_balance(coin="USDT")['result']['USDT']
+    balances = session.get_wallet_balance(coin="USDT")['result']['USDT']
 
     return balances
 '''
