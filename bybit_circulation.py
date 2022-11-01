@@ -302,7 +302,7 @@ class save(object):
 
     def save_circul_cnt(self):
         f = open("save_circul_cnt.txt", "w")
-        f.write(str(self.f))
+        f.write(str(self.g))
         f.close()
 
 
