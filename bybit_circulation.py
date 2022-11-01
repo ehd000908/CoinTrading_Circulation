@@ -584,7 +584,7 @@ while True:
                 # 두 번 이상 매도한 경우 - 평균가 밑, 새로 매수 한 가격보다는 상승 - 절반 매도
                 if get_current_price(btc) < avg_buy_price and add_earning_rate > 2:
 
-                    if 1 < counting < 6:
+                    if 1 < counting < 6 and circul_cnt == 1:
  
                         qty = abs(long_position()['free_qty']) / 2
 
