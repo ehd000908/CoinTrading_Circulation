@@ -438,13 +438,14 @@ while True:
 
             now_earning_rate = (get_current_price(btc) - avg_buy_price) / avg_buy_price * leverage * 100
 
-            add_earning_rate = (get_current_price(btc) - add_price) / add_price * leverage * 100
+            if add_price > 0:
+                add_earning_rate = (get_current_price(btc) - add_price) / add_price * leverage * 100
 
-            
             earnings = round(accumulated_volume * now_earning_rate / 100, 2)
             
             print("현재 수익률:", round(now_earning_rate,2), "%")
-            print("추가 수익률:", round(add_earning_rate,2), "%")
+            if add_price > 0:
+                print("추가 수익률:", round(add_earning_rate,2), "%")
             print("현재 수익금:", earnings, "$")
             print("현재가 :", get_current_price(btc), "$")
 
@@ -578,6 +579,11 @@ while True:
                     qty = abs(long_position()['free_qty'])
 
                     close_long(qty, get_current_price(btc))
+                    
+                    # 정보 저장
+                    # 초기 USDT 잔고 - 기준 매수 시간 - 축적 매수량 - 평균 매수가 - 카운팅 - 추가 매수가 - 순환매 가능 여부
+                    s = save(0,0,0,0,0,0,0)
+                    s.save_add_price()
 
 
                 # 순환매
